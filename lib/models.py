@@ -1,34 +1,34 @@
-# TODO: Define the Task class
-# Each task should store a title and a completed status (default False)
-# Add a complete() method that marks the task as completed and prints confirmation
-
 class Task:
+    """A task with a title and a completion state."""
+
     def __init__(self, title):
-        # TODO: Assign the title
-        # TODO: Set completed to False
-        pass
+        if not isinstance(title, str) or not title.strip():
+            raise ValueError("Task title must be a non-empty string.")
+        self.title = title
+        self.completed = False
 
     def complete(self):
-        # TODO: Mark the task as complete
-        # TODO: Print a confirmation message
-        pass
+        """Mark this task complete and give the user immediate feedback."""
+        self.completed = True
+        print(f"✅ Task '{self.title}' completed.")
 
-# TODO: Define the User class
-# Each user has a name and a list of tasks
-# Add methods to add tasks and search tasks by title
 
 class User:
+    """An account that groups tasks and provides task lookup operations."""
+
     def __init__(self, name):
-        # TODO: Store the user's name
-        # TODO: Initialize an empty list of tasks
-        pass
+        if not isinstance(name, str) or not name.strip():
+            raise ValueError("User name must be a non-empty string.")
+        self.name = name
+        self.tasks = []
 
     def add_task(self, task):
-        # TODO: Add the task to the user's task list
-        # TODO: Print a message confirming the task was added
-        pass
+        """Add a Task to this user and confirm the action."""
+        if not isinstance(task, Task):
+            raise TypeError("task must be a Task instance")
+        self.tasks.append(task)
+        print(f"📌 Task '{task.title}' added to {self.name}.")
 
     def get_task_by_title(self, title):
-        # TODO: Search for a task by its title in the user's task list
-        # TODO: Return the matching task or None
-        pass
+        """Return the first task with this title, or None when it is absent."""
+        return next((task for task in self.tasks if task.title == title), None)
