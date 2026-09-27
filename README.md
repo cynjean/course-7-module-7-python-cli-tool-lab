@@ -190,3 +190,24 @@ After completing this lab, you will:
 ✅ Apply argparse and OOP to real development workflows
 
 These skills help you build maintainable CLI tools that scale with complexity and support real-world use cases.
+
+## Task manager CLI
+
+Run a one-command example from the repository root:
+
+```bash
+python -m lib.cli_tool add-task Alice "Write unit tests"
+python -m lib.cli_tool list-tasks Alice
+```
+
+Because task data is in memory, each one-command invocation starts with an empty
+user collection. To add and complete tasks in the same session, start the
+interactive CLI and enter commands at its prompt:
+
+```bash
+python -m lib.cli_tool --interactive
+```
+
+At the prompt, use `add-task Alice "Write unit tests"`, then
+`complete-task Alice "Write unit tests"`, or `list-tasks Alice`. Use `quit` to
+end the session. Short aliases `add`, `complete`, and `list` are also available.
